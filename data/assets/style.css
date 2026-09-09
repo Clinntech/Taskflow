@@ -1,0 +1,1128 @@
+/* =========================================================
+   TASKFLOW DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+    --primary-border: #bfdbfe;
+
+    --success: #15803d;
+    --success-light: #f0fdf4;
+    --success-border: #bbf7d0;
+
+    --warning: #b45309;
+    --warning-light: #fffbeb;
+    --warning-border: #fde68a;
+
+    --danger: #dc2626;
+    --danger-dark: #b91c1c;
+    --danger-light: #fef2f2;
+    --danger-border: #fecaca;
+
+    --background: #f5f7fb;
+    --surface: #ffffff;
+    --surface-muted: #f8fafc;
+
+    --text: #172033;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+
+    --border: #dbe2ea;
+    --border-dark: #cbd5e1;
+
+    --shadow-small:
+        0 2px 8px rgba(15, 23, 42, 0.05);
+
+    --shadow-medium:
+        0 12px 30px rgba(15, 23, 42, 0.08);
+
+    --shadow-large:
+        0 22px 55px rgba(15, 23, 42, 0.12);
+
+    --radius-small: 8px;
+    --radius-medium: 14px;
+    --radius-large: 20px;
+}
+
+
+/* =========================================================
+   GLOBAL PAGE
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+.stApp {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.08),
+            transparent 27rem
+        ),
+        linear-gradient(
+            180deg,
+            #f8faff 0%,
+            var(--background) 100%
+        );
+    color: var(--text);
+}
+
+.main .block-container {
+    width: 100%;
+    max-width: 1240px;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 5rem;
+    padding-left: 2rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p,
+label,
+span,
+div {
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eef2f7;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 2px solid #eef2f7;
+    border-radius: 20px;
+    background: #94a3b8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+
+/* =========================================================
+   STREAMLIT INTERFACE
+   ========================================================= */
+
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+
+div[data-testid="stToolbar"],
+div[data-testid="stDecoration"],
+div[data-testid="stStatusWidget"],
+#MainMenu,
+footer {
+    display: none !important;
+}
+
+
+/* =========================================================
+   APPLICATION HEADER
+   ========================================================= */
+
+.app-header {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    padding: 2rem 2.2rem;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: var(--radius-large);
+    background:
+        linear-gradient(
+            135deg,
+            #0f2f67 0%,
+            #1d4ed8 60%,
+            #2563eb 100%
+        );
+    box-shadow: var(--shadow-large);
+}
+
+.app-header::after {
+    position: absolute;
+    top: -100px;
+    right: -70px;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.09);
+    content: "";
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+}
+
+.eyebrow,
+.auth-eyebrow {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    color: #bfdbfe;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.app-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.app-header p {
+    max-width: 620px;
+    margin: 0.8rem 0 0;
+    color: #dbeafe;
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   AUTHENTICATION PAGE
+   ========================================================= */
+
+.auth-header {
+    max-width: 720px;
+    margin: 2rem auto 1.5rem;
+    padding: 2.3rem;
+    border: 1px solid rgba(37, 99, 235, 0.16);
+    border-radius: var(--radius-large);
+    background:
+        linear-gradient(
+            135deg,
+            #0f2f67 0%,
+            #1d4ed8 100%
+        );
+    box-shadow: var(--shadow-large);
+    text-align: center;
+}
+
+.auth-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.9rem, 5vw, 2.7rem);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.auth-header p {
+    max-width: 560px;
+    margin: 0.9rem auto 0;
+    color: #dbeafe;
+    font-size: 1rem;
+}
+
+.auth-header + div[data-testid="stTabs"] {
+    max-width: 720px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.auth-header + div[data-testid="stTabs"]
+div[data-testid="stForm"] {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: var(--surface);
+    box-shadow: var(--shadow-medium);
+}
+
+
+/* =========================================================
+   SECTION LABELS
+   ========================================================= */
+
+.section-label {
+    margin: 1rem 0 0.8rem;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.upcoming-heading {
+    margin-top: 2rem;
+}
+
+
+/* =========================================================
+   METRIC CARDS
+   ========================================================= */
+
+div[data-testid="stMetric"] {
+    min-height: 116px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--shadow-small);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+div[data-testid="stMetric"]:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-border);
+    box-shadow: var(--shadow-medium);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+div[data-testid="stTabs"] {
+    margin-top: 1.4rem;
+}
+
+div[data-testid="stTabs"] [data-baseweb="tab-list"] {
+    gap: 0.4rem;
+    padding: 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: var(--shadow-small);
+}
+
+div[data-testid="stTabs"] [data-baseweb="tab"] {
+    min-width: fit-content;
+    min-height: 44px;
+    padding: 0.65rem 1.1rem;
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-weight: 700;
+}
+
+div[data-testid="stTabs"]
+[data-baseweb="tab"][aria-selected="true"] {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+div[data-testid="stTabs"]
+[data-baseweb="tab-highlight"] {
+    display: none;
+}
+
+div[data-testid="stTabs"]
+[data-baseweb="tab-border"] {
+    display: none;
+}
+
+div[data-testid="stTabPanel"] {
+    padding-top: 1.2rem;
+}
+
+
+/* =========================================================
+   FORMS AND CONTAINERS
+   ========================================================= */
+
+div[data-testid="stForm"] {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: var(--surface);
+    box-shadow: var(--shadow-small);
+}
+
+div[data-testid="stForm"] h3 {
+    color: var(--text);
+}
+
+div[data-testid="stForm"] p {
+    color: var(--text-secondary);
+}
+
+label[data-testid="stWidgetLabel"] p {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   TEXT INPUTS, DATE INPUTS AND SELECTBOXES
+   ========================================================= */
+
+div[data-baseweb="input"],
+div[data-baseweb="select"] > div,
+div[data-testid="stTextArea"] textarea {
+    border-color: var(--border-dark) !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    color: var(--text) !important;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+div[data-baseweb="input"]:focus-within,
+div[data-baseweb="select"] > div:focus-within,
+div[data-testid="stTextArea"] textarea:focus {
+    border-color: var(--primary) !important;
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+div[data-baseweb="input"] input,
+div[data-testid="stTextArea"] textarea {
+    color: var(--text) !important;
+    caret-color: var(--primary);
+}
+
+div[data-baseweb="input"] input::placeholder,
+div[data-testid="stTextArea"] textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+div[data-testid="stTextArea"] textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.stButton > button,
+.stFormSubmitButton > button,
+button[kind="primary"],
+button[kind="secondary"] {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    height: auto;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 750;
+    line-height: 1.25;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    transition:
+        transform 0.17s ease,
+        box-shadow 0.17s ease,
+        background 0.17s ease,
+        border-color 0.17s ease;
+}
+
+.stButton > button:hover,
+.stFormSubmitButton > button:hover {
+    transform: translateY(-1px);
+}
+
+button[kind="primary"] {
+    border: 1px solid var(--primary) !important;
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        ) !important;
+    color: #ffffff !important;
+    box-shadow:
+        0 8px 18px rgba(37, 99, 235, 0.2) !important;
+}
+
+button[kind="primary"]:hover {
+    border-color: var(--primary-dark) !important;
+    background: var(--primary-dark) !important;
+    box-shadow:
+        0 10px 22px rgba(37, 99, 235, 0.27) !important;
+}
+
+button[kind="secondary"] {
+    border: 1px solid var(--border-dark) !important;
+    background: #ffffff !important;
+    color: var(--text) !important;
+}
+
+button[kind="secondary"]:hover {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+}
+
+button:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.55 !important;
+    transform: none !important;
+}
+
+
+/* =========================================================
+   TODAY CARD
+   ========================================================= */
+
+.today-card {
+    min-height: 225px;
+    padding: 1.5rem;
+    border: 1px solid var(--primary-border);
+    border-radius: var(--radius-medium);
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            var(--primary-light)
+        );
+    box-shadow: var(--shadow-small);
+}
+
+.today-date {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.today-card > strong {
+    display: block;
+    color: var(--primary);
+    font-size: 3.2rem;
+    font-weight: 850;
+    line-height: 1;
+}
+
+.today-card > p {
+    margin: 0.5rem 0 1.5rem;
+    color: var(--text-secondary);
+}
+
+.today-card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--primary-border);
+}
+
+.today-card-footer span {
+    padding: 0.35rem 0.65rem;
+    border-radius: 20px;
+    background: #ffffff;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   UPCOMING TASKS
+   ========================================================= */
+
+.upcoming-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    box-shadow: var(--shadow-small);
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.upcoming-task:hover {
+    transform: translateX(3px);
+    border-color: var(--primary-border);
+}
+
+.upcoming-task > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.upcoming-task strong {
+    color: var(--text);
+}
+
+.upcoming-task > div span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   TASK CARDS
+   ========================================================= */
+
+.task-card {
+    margin-top: 1.2rem;
+    padding: 1.3rem;
+    border: 1px solid var(--border);
+    border-radius:
+        var(--radius-medium)
+        var(--radius-medium)
+        8px
+        8px;
+    background: var(--surface);
+    box-shadow: var(--shadow-small);
+}
+
+.task-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.task-title-area {
+    min-width: 0;
+}
+
+.task-title-area h3 {
+    margin: 0;
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.task-description {
+    margin: 0.4rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.task-description.empty {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.task-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.status-badge,
+.priority-badge,
+.date-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 750;
+    line-height: 1.25;
+    white-space: normal;
+}
+
+.status-badge.completed {
+    border-color: var(--success-border);
+    background: var(--success-light);
+    color: var(--success);
+}
+
+.status-badge.pending {
+    border-color: var(--warning-border);
+    background: var(--warning-light);
+    color: var(--warning);
+}
+
+.priority-badge.low {
+    border-color: #bae6fd;
+    background: #f0f9ff;
+    color: #0369a1;
+}
+
+.priority-badge.medium {
+    border-color: var(--warning-border);
+    background: var(--warning-light);
+    color: var(--warning);
+}
+
+.priority-badge.high {
+    border-color: var(--danger-border);
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+.date-badge.today {
+    border-color: var(--primary-border);
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.date-badge.upcoming {
+    border-color: var(--border);
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+}
+
+.date-badge.overdue {
+    border-color: var(--danger-border);
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+
+/* =========================================================
+   RESULTS HEADER
+   ========================================================= */
+
+.results-header {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 0.86rem;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   GOAL CARDS
+   ========================================================= */
+
+.goal-card {
+    margin-top: 1rem;
+    padding: 1.3rem;
+    border: 1px solid var(--border);
+    border-radius:
+        var(--radius-medium)
+        var(--radius-medium)
+        8px
+        8px;
+    background: var(--surface);
+    box-shadow: var(--shadow-small);
+}
+
+.goal-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.goal-card h3 {
+    margin: 0;
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.goal-card p {
+    margin: 0.4rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.goal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.goal-meta span {
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 650;
+}
+
+.week-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.75rem 0 1rem;
+    padding: 1rem;
+    border: 1px solid var(--primary-border);
+    border-radius: 10px;
+    background: var(--primary-light);
+}
+
+.week-heading span {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.week-heading strong {
+    color: var(--primary-dark);
+    text-align: right;
+}
+
+
+/* =========================================================
+   EXPANDERS
+   ========================================================= */
+
+div[data-testid="stExpander"] {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius:
+        8px
+        8px
+        var(--radius-medium)
+        var(--radius-medium);
+    background: var(--surface);
+    box-shadow: var(--shadow-small);
+}
+
+div[data-testid="stExpander"] details {
+    border: 0;
+}
+
+div[data-testid="stExpander"] summary {
+    min-height: 48px;
+    color: var(--text-secondary);
+    font-weight: 700;
+}
+
+div[data-testid="stExpander"] summary:hover {
+    color: var(--primary);
+}
+
+.delete-divider {
+    height: 1px;
+    margin: 1.25rem 0;
+    background: var(--border);
+}
+
+
+/* =========================================================
+   POPOVERS
+   ========================================================= */
+
+div[data-testid="stPopover"] > button {
+    min-height: 46px;
+    height: auto;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border-dark);
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--text);
+    font-weight: 750;
+    line-height: 1.25;
+    white-space: normal;
+}
+
+div[data-testid="stPopover"] > button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+div[data-testid="stAlert"] {
+    border-radius: 10px;
+    font-size: 0.88rem;
+}
+
+div[data-testid="stAlert"] p {
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   CHECKBOXES
+   ========================================================= */
+
+div[data-testid="stCheckbox"] label {
+    align-items: flex-start;
+}
+
+div[data-testid="stCheckbox"] p {
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+}
+
+
+/* =========================================================
+   SIDEBAR ACCOUNT
+   ========================================================= */
+
+section[data-testid="stSidebar"] {
+    border-right: 1px solid var(--border);
+    background: #ffffff;
+}
+
+section[data-testid="stSidebar"] > div {
+    padding-top: 2rem;
+}
+
+section[data-testid="stSidebar"] h3 {
+    color: var(--text);
+    font-weight: 800;
+}
+
+section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {
+    padding: 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.app-footer {
+    margin-top: 3rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.app-footer p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVENESS
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+    .main .block-container {
+        padding-top: 1.5rem;
+        padding-right: 1.25rem;
+        padding-left: 1.25rem;
+    }
+
+    .app-header {
+        padding: 1.7rem;
+    }
+
+    div[data-testid="stMetric"] {
+        min-height: 105px;
+        padding: 1rem;
+    }
+
+    div[data-testid="stMetricValue"] {
+        font-size: 1.7rem;
+    }
+
+    .today-card {
+        min-height: auto;
+    }
+
+    div[data-testid="stHorizontalBlock"] {
+        row-gap: 0.8rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVENESS
+   ========================================================= */
+
+@media screen and (max-width: 640px) {
+    .main .block-container {
+        padding-top: 1rem;
+        padding-right: 0.8rem;
+        padding-bottom: 4rem;
+        padding-left: 0.8rem;
+    }
+
+    .app-header {
+        margin-bottom: 1rem;
+        padding: 1.4rem;
+        border-radius: 16px;
+    }
+
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .app-header p {
+        font-size: 0.9rem;
+    }
+
+    .auth-header {
+        margin-top: 1rem;
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+    }
+
+    .auth-header h1 {
+        font-size: 1.9rem;
+    }
+
+    div[data-testid="stTabs"]
+    [data-baseweb="tab-list"] {
+        width: 100%;
+        overflow-x: auto;
+        padding: 0.3rem;
+    }
+
+    div[data-testid="stTabs"]
+    [data-baseweb="tab"] {
+        flex: 1 0 auto;
+        min-height: 42px;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    div[data-testid="stForm"] {
+        padding: 1rem;
+    }
+
+    div[data-testid="stMetric"] {
+        min-height: 94px;
+    }
+
+    div[data-testid="stMetricValue"] {
+        font-size: 1.55rem;
+    }
+
+    .task-card,
+    .goal-card {
+        padding: 1rem;
+    }
+
+    .task-card-header,
+    .goal-card-header {
+        flex-direction: column;
+    }
+
+    .status-badge {
+        align-self: flex-start;
+    }
+
+    .upcoming-task {
+        align-items: flex-start;
+    }
+
+    .week-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .week-heading strong {
+        text-align: left;
+    }
+
+    .today-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stButton > button,
+    .stFormSubmitButton > button,
+    div[data-testid="stPopover"] > button {
+        min-height: 48px;
+        padding: 0.75rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    div[data-testid="stTextArea"] textarea {
+        min-height: 95px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE DISPLAYS
+   ========================================================= */
+
+@media screen and (max-width: 380px) {
+    .main .block-container {
+        padding-right: 0.55rem;
+        padding-left: 0.55rem;
+    }
+
+    .app-header {
+        padding: 1.15rem;
+    }
+
+    .app-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .task-card,
+    .goal-card,
+    div[data-testid="stForm"] {
+        padding: 0.85rem;
+    }
+
+    .task-meta,
+    .goal-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .status-badge,
+    .priority-badge,
+    .date-badge,
+    .goal-meta span {
+        width: 100%;
+    }
+}
